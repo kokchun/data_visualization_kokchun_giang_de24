@@ -8,7 +8,7 @@ figure.constrained_layout.use : False
 lines.linewidth: 3
 
 ### TICKS
-xtick.bottom: False
+xtick.bottom: True
 ytick.left: False
 
 ### FONTS
