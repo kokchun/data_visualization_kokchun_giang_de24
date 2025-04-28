@@ -175,3 +175,5 @@ cython_debug/
 
 # mac
 *.DS_Store
+
+interactive_figures
