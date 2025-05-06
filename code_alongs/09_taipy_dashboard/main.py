@@ -31,7 +31,15 @@ def filter_data(state):
     )
 
 
+# def update_slider_max(state):
+#     df_municipality = filter_df_municipality(state.df, state.selected_educational_area)
+#     state.max_municipalities = len(df_municipality)
+#     print(state.max_municipalities)
+
+
 number_municipalities = 5
+max_municipalities = len(filter_df_municipality(df))
+
 selected_educational_area = "Data/IT"
 
 df_municipality = filter_df_municipality(df, selected_educational_area).head(
@@ -59,7 +67,7 @@ with tgb.Page() as page:
                 tgb.slider(
                     "{number_municipalities}",
                     min=5,
-                    max=len(df_municipality),
+                    max="{max_municipalities}",
                     continuous=False,
                     # on_change=filter_data
                 )
@@ -69,6 +77,7 @@ with tgb.Page() as page:
                     "{selected_educational_area}",
                     lov=df["Utbildningsområde"].unique(),
                     dropdown=True,
+                    # on_change=update_slider_max,
                 )
 
                 tgb.button("FILTRERA DATA", class_name="plain", on_action=filter_data)
