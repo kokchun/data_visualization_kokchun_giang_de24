@@ -28,8 +28,8 @@ with tgb.Page() as page:
     with tgb.part(class_name="container card"):
         with tgb.layout(columns="1 1 1"):
             with tgb.part() as column_fruit:
-                tgb.text("# Hello there taipy", mode="md")
-                tgb.text("Welcome to the world of reactive programming")
+                tgb.text("# Hello there taipy", mode="md", class_name="color-primary")
+                tgb.text("Welcome to the world of reactive programming", class_name="text-underline")
 
                 # binds to slider_value variable and makes it dynamic
                 tgb.slider(value="{slider_value}", min=1, max=50, step=1, continuous=False)
