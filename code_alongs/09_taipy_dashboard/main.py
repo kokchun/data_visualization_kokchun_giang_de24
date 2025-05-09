@@ -57,7 +57,7 @@ municipality_chart = create_municipality_bar(
 )
 
 with tgb.Page() as page:
-    with tgb.part(class_name="container card"):
+    with tgb.part(class_name="container card stack"):
         tgb.text("# MYH dashboard 2024", mode="md")
 
         with tgb.layout(columns="2 1"):
@@ -97,4 +97,4 @@ with tgb.Page() as page:
 
 
 if __name__ == "__main__":
-    Gui(page).run(dark_mode=False, use_reloader=True, port=8080)
+    Gui(page, css_file="assets/main.css").run(dark_mode=False, use_reloader=True, port=8080)
