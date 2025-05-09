@@ -30,6 +30,9 @@ def filter_data(state):
         ylabel="KOMMUN",
     )
 
+    state.municipalities_chart_title = state.number_municipalities
+    state.educational_area_chart_title = state.selected_educational_area
+
 
 # def update_slider_max(state):
 #     df_municipality = filter_df_municipality(state.df, state.selected_educational_area)
@@ -42,10 +45,12 @@ max_municipalities = len(filter_df_municipality(df))
 
 selected_educational_area = "Data/IT"
 
+municipalities_chart_title = number_municipalities
+educational_area_chart_title = selected_educational_area
+
 df_municipality = filter_df_municipality(df, selected_educational_area).head(
     number_municipalities
 )
-
 
 municipality_chart = create_municipality_bar(
     df_municipality, xlabel="# ANSÖKTA UTBILDNINGAR", ylabel="KOMMUN"
@@ -57,7 +62,11 @@ with tgb.Page() as page:
 
         with tgb.layout(columns="2 1"):
             with tgb.part(class_name="card"):
-                tgb.text("Graph")
+                tgb.text(
+                    "## Antalet ansökta YH utbildningar per kommun (topp {municipalities_chart_title}) för {educational_area_chart_title}",
+                    class_name="title-chart",
+                    mode="md",
+                )
                 tgb.chart(figure="{municipality_chart}")
 
             with tgb.part(class_name="card"):
