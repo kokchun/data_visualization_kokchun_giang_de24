@@ -57,7 +57,7 @@ municipality_chart = create_municipality_bar(
 )
 
 with tgb.Page() as page:
-    with tgb.part(class_name="container card stack"):
+    with tgb.part(class_name="container card stack-large"):
         tgb.text("# MYH dashboard 2024", mode="md")
 
         with tgb.layout(columns="2 1"):
