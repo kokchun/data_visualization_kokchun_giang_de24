@@ -69,7 +69,7 @@ with tgb.Page() as page:
                 )
                 tgb.chart(figure="{municipality_chart}")
 
-            with tgb.part(class_name="card"):
+            with tgb.part(class_name="card left-margin-md"):
                 tgb.text("## Filtrera data", mode="md")
                 tgb.text("Filtrera antalet kommuner", mode="md")
 
@@ -89,7 +89,7 @@ with tgb.Page() as page:
                     # on_change=update_slider_max,
                 )
 
-                tgb.button("FILTRERA DATA", class_name="plain", on_action=filter_data)
+                tgb.button("FILTRERA DATA", class_name="button-color", on_action=filter_data)
 
         with tgb.part(class_name="card"):
             tgb.text("Raw data")
