@@ -1,43 +1,8 @@
 import taipy.gui.builder as tgb
 from taipy.gui import Gui
-import pandas as pd
-from utils.constants import DATA_DIRECTORY
+from backend.data_processing import filter_df_municipality, df
 from frontend.charts import create_municipality_bar
-
-df = pd.read_excel(
-    DATA_DIRECTORY / "resultat-ansokningsomgang-2024.xlsx",
-    sheet_name="Tabell 3",
-    skiprows=5,
-)
-
-
-def filter_df_municipality(df, educational_area="Data/IT"):
-    return (
-        df.query("Utbildningsområde == @educational_area")["Kommun"]
-        .value_counts()
-        .reset_index()
-        .rename({"count": "Ansökta utbildningar"}, axis=1)
-    )
-
-
-def filter_data(state):
-    print(state)
-    df_municipality = filter_df_municipality(state.df, state.selected_educational_area)
-
-    state.municipality_chart = create_municipality_bar(
-        df_municipality.head(state.number_municipalities),
-        xlabel="# ANSÖKTA UTBILDNINGAR",
-        ylabel="KOMMUN",
-    )
-
-    state.municipalities_chart_title = state.number_municipalities
-    state.educational_area_chart_title = state.selected_educational_area
-
-
-# def update_slider_max(state):
-#     df_municipality = filter_df_municipality(state.df, state.selected_educational_area)
-#     state.max_municipalities = len(df_municipality)
-#     print(state.max_municipalities)
+from backend.updates import filter_data
 
 
 number_municipalities = 5
